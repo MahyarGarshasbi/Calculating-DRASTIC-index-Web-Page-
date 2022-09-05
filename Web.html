@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	button {
+    background-color:lightsalmon;
+    border: solid;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+		}
+	button5 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.button5:hover {
+    background-color: #555555;
+    color: white;
+}
+	
+	select {
+  width: 100%;
+  padding: 8px 20px;
+  border: solid yellow  ;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+	input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border:  solid yellow;
+  border-radius: 4px;
+		
+		
+}
+	input[type=text] {
+		align-content: center ;
+		align-items: center;
+		align-self: center;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border:  solid #2E2B2B;
+  border-radius: 4px;
+		font-size:24px
+		
+		
+}
+	
+	input[type=number]:focus {
+  border: 3px solid #555;
+}
+	
+	select:focus {
+  border: 3px solid #555;
+}
+	input[type=button] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+	
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 75%;
+}
+
+#customers td, #customers th {
+  border: 3px solid #ddd;
+  padding: 8px ;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 20px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+	
+	
+	<br>
+	<br>
+
+	
+<h1> Groundwater  vulnerability  from surface sources of pollution </h1>
+    <br>	
+    <hr>
+	<br>
+	<br>
+<table id="customers" align="center" >
+  <tr>
+    <th>HYDROGEOLOGIC
+FACTOR </th>
+    <th>Value</th>
+    
+  </tr>
+  <tr>
+    <td>Depth to Water (ft)</td>
+    <td><input type="number" id="DW" size="25" onkeyup="DW()"  placeholder="MIN = 0 MAX=300"/> </td>
+    
+  </tr>
+  <tr>
+    <td>Net Recharge (in/yr)</td>
+    <td><input type="number" id="NR" size="25" onkeyup="NR()"  placeholder="MIN = 0 MAX=50"/></td>
+   
+  </tr>
+  <tr>
+    <td>Aquifer Media </td>
+    <td><select id="AM" onChange="AM()"  required>
+<option value="2">Massive Shale</option>
+<option value="3">Metamorphic/Igneous</option>
+<option value="4">Weathered Metamorphic/Igneous</option>
+<option value="5">Glacial Till</option>
+<option value="6">Bedded Sandstone, Limestone and Shale Sequence</option>
+<option value="6">Massive Sandstone</option>
+<option value="6">Massive Limestone</option>
+<option value="8">Sand and Gravel</option>
+<option value="9">Basalt</option>
+<option value="10">Karst Limestone</option>		
+   </select></td>
+   
+  </tr>
+  <tr>
+    <td>Soil Media</td>
+    <td><select id="SM"    required>
+<option value="10">Gravel</option>
+<option value="10">Thin or Absent</option>
+<option value="9">Sand</option>
+<option value="8">Peat</option>
+<option value="7">Shrinking and/or Aggregated Clay</option>
+<option value="6">Sandy Loam</option>
+<option value="5">Loam</option>
+<option value="4">Silty Loam</option>
+<option value="3">Clay Loam</option>
+<option value="2">Muck</option>
+<option value="1">Nonshrinking and Nonaggregated Clay</option>
+   </select></td>
+
+  </tr>
+  <tr>
+    <td>Topography (% slope)</td>
+    <td><input type="number" id="T" size="25" onkeyup="T()"  placeholder="MIN = 0 MAX=45"/></td>
+   
+  </tr>
+  <tr>
+    <td>Impact Vadose Zone</td>
+    <td><select id="IV"    required>
+<option value="1">Confining Layer</option>
+<option value="3">Silt/clay</option>
+<option value="3">Shale</option>
+<option value="6">Limestone</option>
+<option value="6">Sandstone</option>
+<option value="6">Bedded Limestone, Sandstone, Shale</option>
+<option value="6">Sand and Gravel with significant Silt and Clay</option>
+<option value="4">Metamorphic/Igneous</option>
+<option value="8">Sand and Gravel</option>
+<option value="9">Basalt</option>
+<option value="10">Karst Limestone</option>
+   </select></td>
+    
+  </tr>
+  <tr>
+    <td>Hydraulic
+Conductivity (gpd/ft2)</td>
+    <td><input type="number" id="HC" size="25" onkeyup="HC()"  placeholder="MIN = 0 MAX=10000"/></td>
+   
+  </tr>
+  
+</table>
+	
+	
+	   <br>	
+    <hr>
+	<br>
+	<h2>Calculate DRASTIC Index</h2>
+	<br>
+	
+	<button onclick="DRASTICIndex()" class="button5" >Calculate</button> 
+	
+	
+	
+	<table id="customers" align="center" >
+  <tr>
+    <th>DRASTIC Index </th>
+    <th>Vulnerability
+Classification</th>
+    
+  </tr>
+  <tr>
+    <td><input type="text" disabled id="Overall" /></td>
+    <td><input type="text" disabled id="class" /></td>
+    
+  </tr>
+		</table>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	
+	<hr>
+	
+	<p><strong>Created by: Mahyar Garshsbi </strong> </p>
+	
+	<p>E-mail: <a href="Mahyar_Garshasbi@CivilEng.iust.ac.ir">Mahyar_Garshasbi@CivilEng.iust.ac.ir</a></p>
+	
+	<script>
+		
+		
+			e = 2 ;
+		    f = 10 ;
+		    g =1;
+		    a = "a";
+		    b = "b";
+		    c = "c";
+		    d = "d";
+
+		function DW()
+		{
+			var x = document.getElementById('DW').value;
+			
+			if (x < 0 )
+			{document.getElementById('DW').value=""; a = "out of Range";alert('!مقدار عدد ورودی شما خارج از محدوده است ');	}
+			else if ( x < 5 )
+			{a = 10 ;	}
+			else if ( x < 15 )
+			{a = 9 ;	}
+			else if ( x < 30 )
+			{a = 7 ;	}
+			else if ( x < 50 )
+			{a = 5 ;	}
+			else if ( x < 75 )
+			{a = 3 ;	}
+			else if ( x < 100 )
+			{a = 2 ;	}
+			else if ( x < 300 )
+			{a = 1 ;	}
+			else 
+			{document.getElementById('DW').value="";a = "out of Range";alert('!مقدار عدد ورودی شما خارج از محدوده است ');	}	
+			
+			document.getElementById('DWOUT').innerHTML = a 
+		}
+		function NR()
+		{
+			var x = document.getElementById('NR').value;
+			
+			if (x < 0 )
+			{document.getElementById('NR').value="";b = "out of Range";alert('!مقدار عدد ورودی شما خارج از محدوده است ');	}
+			else if ( x < 2 )
+			{b = 1 ;	}
+			else if ( x < 4 )
+			{b = 3 ;	}
+			else if ( x < 7 )
+			{b = 6 ;	}
+			else if ( x < 10 )
+			{b = 8 ;	}
+			else if ( x < 50 )
+			{b = 9 ;	}
+			else 
+			{document.getElementById('NR').value="";b = "out of Range";alert('!مقدار عدد ورودی شما خارج از محدوده است ');	}	
+			
+			document.getElementById('NROUT').innerHTML = b 
+		}
+		
+		function T()
+		{
+			var x = document.getElementById('T').value;
+			
+			if (x < 0 )
+			{document.getElementById('T').value="";c = "out of Range";alert('!مقدار عدد ورودی شما خارج از محدوده است ');	}
+			else if ( x < 2 )
+			{c = 10 ;	}
+			else if ( x < 6 )
+			{c = 9 ;	}
+			else if ( x < 12 )
+			{c = 5 ;	}
+			else if ( x < 18 )
+			{c = 3 ;	}
+			else if ( x < 45 )
+			{c = 1 ;	}
+			else 
+			{document.getElementById('T').value="";c = "out of Range";alert('!مقدار عدد ورودی شما خارج از محدوده است ');	}	
+			
+			document.getElementById('TOUT').innerHTML = c 
+		}
+		
+		
+		function HC()
+		{
+			var x = document.getElementById('HC').value;
+			
+			if (x < 0 )
+			{document.getElementById('HC').value="";d = "out of Range";alert('!مقدار عدد ورودی شما خارج از محدوده است ');	}
+			else if ( x < 100 )
+			{d = 1 ;	}
+			else if ( x < 300 )
+			{d = 2 ;	}
+			else if ( x < 700 )
+			{d = 4 ;	}
+			else if ( x < 1000 )
+			{d = 6 ;	}
+			else if ( x < 2000 )
+			{d = 8 ;	}
+			else if ( x < 10000 )
+			{d = 10 ;	}
+			else 
+			{document.getElementById('HC').value="";d = "out of Range";  alert('!مقدار عدد ورودی شما خارج از محدوده است '); 	}	
+			
+			document.getElementById('HCOUT').innerHTML = d 
+		}
+		
+		
+		//function AM()
+			//{
+				//e = parseInt(document.getElementById('AM').value) ;
+				//document.getElementById('OverallAQI').innerHTML = e ;
+				
+			//}
+		
+		function DRASTICIndex() {
+			e = parseInt(document.getElementById('AM').value) ;
+			f = parseInt(document.getElementById('SM').value) ;
+			g = parseInt(document.getElementById('IV').value) ;
+	var DI = parseInt(a)*5 + parseInt(b)*4+parseInt(c)*1 +parseInt(d)*3 +e*3+f*2+g*5 ;
+	
+			
+  
+	if (isNaN(DI)) {
+			
+		alert('لطفا تمام اطلاعات را وارد کنید  ');
+  }
+	document.getElementById("Overall").value = DI ;
+	
+			
+		if ( DI < 80 )	
+		{ document.getElementById("class").value = "Very Low" ; document.getElementById("class").style.background ="purple";	}
+	    else if (DI<90 )
+		{ document.getElementById("class").value = " Low" ;document.getElementById("class").style.background ="blue" ;	}	
+		else if (DI<120 )
+		{ document.getElementById("class").value = "Moderate" ;document.getElementById("class").style.background ="green" ;	}	
+		else if (DI<140 )
+		{ document.getElementById("class").value = "High" ;	document.getElementById("class").style.background ="yellow" ;}	
+	    else if (DI<200 )
+		{ document.getElementById("class").value = "Very High" ;document.getElementById("class").style.background ="orange" ;	}	
+			
+}	
+		
+		
+		
+		
+	</script>
+
+	
+	
+</body>
+</html>
